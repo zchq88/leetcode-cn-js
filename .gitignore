@@ -1,5 +1,6 @@
 node_modules
-/yarn.lock
+tempCodeRunnerFile.js
+yarn.lock
 
 # local env files
 .env.local
