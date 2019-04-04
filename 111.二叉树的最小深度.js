@@ -42,19 +42,8 @@
  * @return {number}
  */
 const minDepth = function (root) {
-  let res = 0;
-  if (root === null) { return res; }
-  const queue = [];
-  queue.push(root);
-  while (queue.length !== 0) {
-    const LevelSize = queue.length;
-    res += 1;
-    for (let i = 0; i < LevelSize; i += 1) {
-      const Node = queue.shift();
-      if (Node.right === null && Node.left === null) return res;
-      if (Node.left !== null)queue.push(Node.left);
-      if (Node.right !== null)queue.push(Node.right);
-    }
-  }
-  return res;
+  if (!root) return 0;
+  const left = minDepth(root.left);
+  const right = minDepth(root.right);
+  return (left === 0 || right === 0) ? left + right + 1 : 1 + Math.min(left, right);
 };
