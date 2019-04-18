@@ -41,9 +41,18 @@
  * @param {TreeNode} root
  * @return {number}
  */
+function getMin(root) {
+  if (root == null) {
+    return Number.MAX_VALUE;
+  }
+  if (!root.left && !root.right) {
+    return 1;
+  }
+  return Math.min(getMin(root.left), getMin(root.right)) + 1;
+}
 const minDepth = function (root) {
-  if (!root) return 0;
-  const left = minDepth(root.left);
-  const right = minDepth(root.right);
-  return (left === 0 || right === 0) ? left + right + 1 : 1 + Math.min(left, right);
+  if (root == null) {
+    return 0;
+  }
+  return getMin(root);
 };
