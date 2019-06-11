@@ -33,11 +33,10 @@ LRUCache.prototype.get = function (key) {
 LRUCache.prototype.put = function (key, value) {
   if (this.LRU.indexOf(key) !== -1) {
     this.LRU.splice(this.LRU.indexOf(key), 1);
-    this.LRU.unshift(key);
   } else {
     delete this.map[this.LRU.pop()];
-    this.LRU.unshift(key);
   }
+  this.LRU.unshift(key);
   this.map[key] = value;
   // console.log(this.LRU);
   // console.log(this.map);
